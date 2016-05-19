@@ -1,1 +1,2 @@
-# generator-djzhang-targets
+npm link
+
