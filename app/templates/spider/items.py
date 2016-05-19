@@ -8,7 +8,7 @@
 import scrapy
 
 
-class <%= appname%>(scrapy.Item):
+class <%= appclassname%>(scrapy.Item):
     url = scrapy.Field()
     guid = scrapy.Field()
     created_at = scrapy.Field()

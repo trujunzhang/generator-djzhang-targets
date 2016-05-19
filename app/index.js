@@ -12,6 +12,7 @@ module.exports = generators.Base.extend({
             appDir = destRoot,
             templateContext = {
                 appname: this.appname,
+                appclassname: this.appclassname,
                 appdomain: this.appdomain,
                 appstarturl: this.appstarturl
             };
@@ -105,6 +106,12 @@ module.exports = generators.Base.extend({
             },
             {
                 type: 'input',
+                name: 'classname',
+                message: 'Your spider name',
+                default: this.appname // Default to current folder name
+            },
+            {
+                type: 'input',
                 name: 'appdomain',
                 message: 'Your spider domain'
             },
@@ -122,6 +129,7 @@ module.exports = generators.Base.extend({
     },
     _saveAnswers: function (answers, callback) {
         this.appname = answers.name;
+        this.appclassname = answers.classname;
         this.appdomain = answers.appdomain;
         this.appstarturl = answers.starturl;
         callback();

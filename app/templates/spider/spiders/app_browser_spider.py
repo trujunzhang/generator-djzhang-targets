@@ -8,7 +8,7 @@ from cw<%= appname%>.items import <%= appname%>
 import urlparse
 
 
-class <%= appname%>Spider(scrapy.Spider):
+class <%= appclassname%>sSpider(scrapy.Spider):
     name = "<%= appname%>_browser"
     allowed_domains = ["<%= appdomain%>"]
     start_urls = [
@@ -21,11 +21,11 @@ class <%= appname%>Spider(scrapy.Spider):
         self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
         self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
 
-        super(<%= appname%>Spider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>sSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(<%= appname%>Spider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>sSpider, cls).from_crawler(crawler,
                                                          args,
                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                          )

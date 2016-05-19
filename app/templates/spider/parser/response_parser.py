@@ -1,4 +1,4 @@
-from cw<%= appname%>.items import <%= appname%>
+from cw<%= appname%>.items import <%= appclassname%>
 from cw<%= appname%>.parser.base_parser import BaseParser
 
 import urlparse
@@ -57,7 +57,7 @@ class ResponseParse(BaseParser):
         address = self.get_value_from_response(hxs, '//div[@class="content physical-address"]/text()', 0).replace("\n",
                                                                                                                   "")
 
-        item = <%= appname%>(
+        item = <%= appclassname%>(
             url=url,
             cluster=cluster,
             category=category,
