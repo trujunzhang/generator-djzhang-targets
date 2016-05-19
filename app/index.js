@@ -101,13 +101,13 @@ module.exports = generators.Base.extend({
             {
                 type: 'input',
                 name: 'name',
-                message: 'Your project name',
+                message: 'Your project name,like googleplay',
                 default: this.appname // Default to current folder name
             },
             {
                 type: 'input',
                 name: 'classname',
-                message: 'Your spider name',
+                message: 'Your spider name,like GooglePlay',
                 default: this.appname // Default to current folder name
             },
             {
