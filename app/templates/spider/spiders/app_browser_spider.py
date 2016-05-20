@@ -8,7 +8,7 @@ from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
 
-class <%= appclassname%>sSpider(scrapy.Spider):
+class <%= appclassname%>sBrowserSpider(scrapy.Spider):
     name = "<%= appname%>_browser"
     allowed_domains = ["<%= appdomain%>"]
     start_urls = [

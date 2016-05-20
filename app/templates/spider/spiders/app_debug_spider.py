@@ -8,7 +8,7 @@ from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
 
-class <%= appclassname%>sSpider(scrapy.Spider):
+class <%= appclassname%>sDebugSpider(scrapy.Spider):
     name = "<%= appname%>_debug"
     allowed_domains = ["<%= appdomain%>"]
     start_urls = [
@@ -36,3 +36,5 @@ class <%= appclassname%>sSpider(scrapy.Spider):
     def parse(self, response):
         item = self._crawl_parser.parse(response.url, response)
         yield item
+
+        self._history_db.process_item(response.url)

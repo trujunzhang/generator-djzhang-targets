@@ -34,7 +34,7 @@ class MongoPipeline(object):
         self._item_db.close_spider()
 
     def process_item(self, item, spider):
-        self._item_db.process_item(item, spider)
+        self._item_db.process_item(item['url'], item)
         return item
 
     def _handle_error(self, failure, item, spider):

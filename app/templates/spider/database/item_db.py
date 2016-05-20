@@ -20,7 +20,6 @@ class ItemDatabase(BaseDatabase):
     def process_item(self, url, item=None):
         global data
 
-        item["url"] = url
         item["guid"] = CrawlUtils.get_guid(url)
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
         item["updated_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
