@@ -21,11 +21,11 @@ class <%= appclassname%>sBrowserSpider(scrapy.Spider):
         self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
         self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
 
-        super(<%= appclassname%>sSpider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>sBrowserSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(<%= appclassname%>sSpider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>sBrowserSpider, cls).from_crawler(crawler,
                                                          args,
                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                          )

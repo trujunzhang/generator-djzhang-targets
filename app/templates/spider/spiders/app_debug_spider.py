@@ -24,11 +24,11 @@ class <%= appclassname%>sDebugSpider(scrapy.Spider):
         from cw<%= appname%>.parser.response_parser import ResponseParse
         self._crawl_parser = ResponseParse()
 
-        super(<%= appclassname%>sSpider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>sDebugSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(<%= appclassname%>sSpider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>sDebugSpider, cls).from_crawler(crawler,
                                                          args,
                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                          )
