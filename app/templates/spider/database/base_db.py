@@ -1,13 +1,5 @@
 import pymongo
 
-from scrapy.conf import settings
-from scrapy.exceptions import DropItem
-from scrapy import log
-
-from datetime import datetime, time
-from hashlib import md5
-from datetime import datetime
-
 from cw<%= appname%>.utils.crawl_utils import CrawlUtils
 
 

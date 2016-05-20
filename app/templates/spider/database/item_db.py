@@ -1,13 +1,7 @@
 from cw<%= appname%>.database.base_db import BaseDatabase
 
-import pymongo
-
-from scrapy.conf import settings
+import logging
 from scrapy.exceptions import DropItem
-from scrapy import log
-
-from datetime import datetime, time
-from hashlib import md5
 from datetime import datetime
 
 from cw<%= appname%>.utils.crawl_utils import CrawlUtils
@@ -19,7 +13,7 @@ class ItemDatabase(BaseDatabase):
 
     def process_item(self, url, item=None):
         global data
-
+        item["url"] = url
         item["guid"] = CrawlUtils.get_guid(url)
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
         item["updated_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
@@ -41,7 +35,7 @@ class ItemDatabase(BaseDatabase):
 
         if valid:
             self.db[self.collection_name].insert(dict(item))
-            log.msg("<%= appname%> added to MongoDB database!", level=log.DEBUG)
+            logging.debug("<%= appname%> added to MongoDB database!")
 
     @staticmethod
     def check_data_valid(item):

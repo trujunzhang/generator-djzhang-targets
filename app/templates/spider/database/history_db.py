@@ -1,13 +1,6 @@
 from cw<%= appname%>.database.base_db import BaseDatabase
 
-import pymongo
-
-from scrapy.conf import settings
-from scrapy.exceptions import DropItem
-from scrapy import log
-
-from datetime import datetime, time
-from hashlib import md5
+import logging
 from datetime import datetime
 
 from cw<%= appname%>.utils.crawl_utils import CrawlUtils
@@ -25,4 +18,4 @@ class HistoryDatabase(BaseDatabase):
         }
 
         self.db[self.collection_name].insert(item)
-        log.msg("<%= appname%>History added to MongoDB database!", level=log.DEBUG)
+        logging.debug("<%= appname%>History added to MongoDB database!")

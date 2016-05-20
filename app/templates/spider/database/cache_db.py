@@ -1,13 +1,6 @@
 from cw<%= appname%>.database.base_db import BaseDatabase
 
-import pymongo
-
-from scrapy.conf import settings
-from scrapy.exceptions import DropItem
-from scrapy import log
-
-from datetime import datetime, time
-from hashlib import md5
+import logging
 from datetime import datetime
 
 from cw<%= appname%>.utils.crawl_utils import CrawlUtils
@@ -27,4 +20,4 @@ class CacheDatabase(BaseDatabase):
         }
 
         self.db[self.collection_name].update_one({'guid': guid}, {'$set': dict(item)}, True)
-        log.msg("<%= appname%>Cache added to MongoDB database!", level=log.DEBUG)
+        logging.debug("<%= appname%>Cache added to MongoDB database!")
