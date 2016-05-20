@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # Define your item pipelines here
@@ -5,16 +6,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-
-import pymongo
-
-from scrapy.conf import settings
-from scrapy.exceptions import DropItem
-from scrapy import log
-
-from datetime import datetime
-from hashlib import md5
-
+import logging
 
 class MongoPipeline(object):
     def __init__(self, mongo_uri):
@@ -40,4 +32,5 @@ class MongoPipeline(object):
     def _handle_error(self, failure, item, spider):
         """Handle occurred on db interaction."""
         # do nothing, just log
-        log.err(failure)
+        logging.error(failure)
+
