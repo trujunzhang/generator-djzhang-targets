@@ -4,7 +4,7 @@ from random import Random
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
 
-from cw<%= appname%>.items import <%= appname%>
+from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
 

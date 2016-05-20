@@ -4,7 +4,7 @@ from random import Random
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
 
-from cw<%= appname%>.items import <%= appname%>
+from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
 
@@ -49,29 +49,8 @@ class <%= appclassname%>sSpider(scrapy.Spider):
         sel = Selector(response)
         navs = sel.xpath(select)
 
-        len__ = navs.__len__()
-        if not len__ == 0:
-            index = Random().randint(0, (len__ - 1))
-            if index > 0 & index < len__:
-                hxs = navs.__getitem__(index)
-                extractedLink = hxs.xpath(select + '//@href')[index].extract()
-                relativeAppLink = urlparse.urljoin(response.url, extractedLink.strip())
-                if not self.dbutils.check_exist_and_save(relativeAppLink):
-                    yield scrapy.Request(relativeAppLink, self.parse_detail)
+        if not self._history_db.check_exist(abstractPath):
+           yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})
 
-    def parse_cluster(self, response):
-        _seen = set()
 
-        hxs = HtmlXPathSelector(response)
-        links = hxs.select('//div/a[@class="card-click-target"]/@href').extract()
-        count = 0
-        for link in links:
-            appLink = urlparse.urljoin(response.url, link.strip())
-            if appLink in _seen:
-                self.log('already seen')
-            else:
-                _seen.add(appLink)
-                if not self.dbutils.check_exist_and_save(appLink):
-                    yield scrapy.Request(appLink, self.parse_detail)
 
-            count += 1
