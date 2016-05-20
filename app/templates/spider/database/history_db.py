@@ -11,11 +11,12 @@ class HistoryDatabase(BaseDatabase):
         super(HistoryDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
     def process_item(self, url, item=None):
+        guid = CrawlUtils.get_guid(url)
         item = {
             'url': url,
             'guid': CrawlUtils.get_guid(url),
             'created_at': datetime.utcnow().replace(microsecond=0).isoformat(' '),
         }
 
-        self.db[self.collection_name].insert(item)
+        self.db[self.collection_name].update_one({'guid': guid}, {'$set': dict(item)}, True)
         logging.debug("<%= appclassname%>History added to MongoDB database!")
