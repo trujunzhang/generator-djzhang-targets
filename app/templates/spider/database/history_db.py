@@ -18,4 +18,4 @@ class HistoryDatabase(BaseDatabase):
         }
 
         self.db[self.collection_name].insert(item)
-        logging.debug("<%= appname%>History added to MongoDB database!")
+        logging.debug("<%= appclassname%>History added to MongoDB database!")

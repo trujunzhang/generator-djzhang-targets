@@ -20,4 +20,4 @@ class CacheDatabase(BaseDatabase):
         }
 
         self.db[self.collection_name].update_one({'guid': guid}, {'$set': dict(item)}, True)
-        logging.debug("<%= appname%>Cache added to MongoDB database!")
+        logging.debug("<%= appclassname%>Cache added to MongoDB database!")
