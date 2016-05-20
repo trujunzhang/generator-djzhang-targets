@@ -31,11 +31,15 @@ module.exports = generators.Base.extend({
             "dest": "/" + projectName + "/spiders",
             "value": [
                 "app_browser_spider.py",
-                "app_spider.py"
+                "app_spider.py",
+                "app_browser_debug_spider.py",
+                "app_debug_spider.py"
             ],
             "renames": [
                 this.appname + "_browser_spider.py",
-                this.appname + "_spider.py"
+                this.appname + "_spider.py",
+                this.appname + "_browser_debug_spider.py",
+                this.appname + "_debug_spider.py"
             ]
         };
         var files = [
