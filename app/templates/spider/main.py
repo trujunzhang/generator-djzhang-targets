@@ -21,7 +21,9 @@ def main():
     utils = Crawler()
     utils.prepare()
     utils.execute("<%= appname%>")
+    # utils.execute("<%= appname%>_debug")
     # utils.execute("<%= appname%>_browser")
+    # utils.execute("<%= appname%>_browser_debug")
 
 if __name__ == '__main__':
     main()
