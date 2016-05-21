@@ -3,7 +3,7 @@ from random import Random
 
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
-
+from scrapy_webdriver.http import WebdriverRequest
 from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
