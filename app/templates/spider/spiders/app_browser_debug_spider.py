@@ -4,6 +4,9 @@ from random import Random
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
 
+from selenium import webdriver
+import time
+
 from cw<%= appname%>.items import <%= appclassname%>
 import urlparse
 
@@ -16,6 +19,8 @@ class <%= appclassname%>sBrowserDebugSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
+        self.driver = webdriver.Firefox()
+
         from cw<%= appname%>.database_factory import DatabaseFactory, DatabaseTypes
 
         self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
@@ -32,6 +37,8 @@ class <%= appclassname%>sBrowserDebugSpider(scrapy.Spider):
                                                          args,
                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                          )
+    def spider_closed(self, spider):
+        self.driver.close()
 
     def parse(self, response):
         item = self._crawl_parser.parse(response.url, response)
