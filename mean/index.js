@@ -23,64 +23,37 @@ module.exports = generators.Base.extend({
     this.fs.copy(this.sourceRoot() + "/**/*", destRoot + projectName);
 
     var spiders = {
-      "source": "/spider/spiders",
-      "dest": "/" + projectName + "/spiders",
       "value": [
-        "app_browser_spider.py",
-        "app_spider.py",
-        "app_browser_debug_spider.py",
-        "app_debug_spider.py"
+        "client/config/itunes.client.menus.js",
+        "client/config/itunes.client.routes.js",
+        "client/controllers/list-itunes.client.controller.js",
+        "client/itunes.client.module.js",
+        "client/services/itunes.client.service.js",
+        "client/views/list-itunes.client.view.html",
+        "client/views/_list-banner.client.view.html",
+        "client/views/_list-table.client.view.html",
+        "server/config/itunes.server.config.js",
+        "server/controllers/itunes.server.controller.js",
+        "server/models/itune.server.model.js",
+        "server/policies/itunes.server.policy.js",
+        "server/routes/itunes.server.routes.js"
       ],
       "renames": [
-        this.appname + "_browser_spider.py",
-        this.appname + "_spider.py",
-        this.appname + "_browser_debug_spider.py",
-        this.appname + "_debug_spider.py"
+        "client/config/" + this.appname + "s.client.menus.js",
+        "client/config/" + this.appname + "s.client.routes.js",
+        "client/controllers/list-" + this.appname + "s.client.controller.js",
+        "client/" + this.appname + "s.client.module.js",
+        "client/services/" + this.appname + "s.client.service.js",
+        "client/views/list-" + this.appname + "s.client.view.html",
+        "client/views/_list-banner.client.view.html",
+        "client/views/_list-table.client.view.html",
+        "server/config/" + this.appname + "s.server.config.js",
+        "server/controllers/" + this.appname + "s.server.controller.js",
+        "server/models/" + this.appname + ".server.model.js",
+        "server/policies/" + this.appname + "s.server.policy.js",
+        "server/routes/" + this.appname + "s.server.routes.js",
       ]
     };
-    var files = [
-      {
-        "source": "",
-        "dest": "",
-        "value": [
-          "readme.MD",
-          "scrapy.cfg",
-          "setup.py"
-        ]
-      },
-      {
-        "source": "/spider",
-        "dest": "/" + projectName,
-        "value": [
-          "database_factory.py",
-          "items.py",
-          "main.py",
-          "parser_factory.py",
-          "pipelines.py",
-          "settings.py"
-        ]
-      },
-      {
-        "source": "/spider/database",
-        "dest": "/" + projectName + "/database",
-        "value": [
-          "base_db.py",
-          "cache_db.py",
-          "history_db.py",
-          "item_db.py"
-        ]
-      },
-      {
-        "source": "/spider/parser",
-        "dest": "/" + projectName + "/parser",
-        "value": [
-          "base_parser.py",
-          "browse_parser.py",
-          "response_parser.py"
-        ]
-      },
-      spiders
-    ];
 
     // files.forEach(function (entry) {
     //   var _value = entry.value;
