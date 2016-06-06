@@ -13,10 +13,9 @@ module.exports = generators.Base.extend({
         templateContext = {
           appname: this.appname,
           appclassname: this.appclassname,
-          appdomain: this.appdomain,
-          appstarturl: this.appstarturl
+          appmodels: this.appmodels
         };
-    var projectName = "/cw" + this.appname;
+    var projectName = "/_" + this.appname;
 
     mkdirp(appDir + projectName);
     mkdirp(appDir + projectName + projectName);
@@ -129,9 +128,7 @@ module.exports = generators.Base.extend({
   _saveAnswers: function (answers, callback) {
     this.appname = answers.name;
     this.appclassname = answers.classname;
-    this.appmodels = answers.models;
-    console.log("app models: " + answers.models);
-    this._makeModelCode(answers.models);
+    this.appmodels = this._makeModelCode(answers.models);
     callback();
   },
   _makeModelCode: function (models) {
