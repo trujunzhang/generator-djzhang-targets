@@ -143,7 +143,7 @@ module.exports = generators.Base.extend({
           "type: String," +
           "default: ''" +
           "}";
-      contents.append(tmp);
+      contents.push(tmp);
     });
     var result = contents.join(',');
     console.log("array's length: " + array.length + ";first is: " + array[0]);
