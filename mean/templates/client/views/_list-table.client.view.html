@@ -1,12 +1,7 @@
 <table class="table table-bordered table-hover table-striped">
   <thead>
   <tr>
-    <th>App</th>
-    <th>Version</th>
-    <th>Published</th>
-    <th>Developer</th>
-    <th>reviews</th>
-    <th>reviewsCurrent</th>
+    <%= appths%>
   </tr>
   </thead>
   <tbody>
@@ -16,15 +11,12 @@
         <img alt="Icon175x175" class="img-responsive" ng-src="{{<%= appname%>.thumbnail}}" id="thumbnail">
       </a>
     </td>
-    <td>{{<%= appname%>.version}}</td>
-    <td>{{<%= appname%>.appLastUpdated}}</td>
+    <%= apptds%>
     <td>
       <a href="{{<%= appname%>.website}}">
         <span>{{<%= appname%>.developer}}</span>
       </a>
     </td>
-    <td>{{<%= appname%>.ofReviews}}</td>
-    <td>{{<%= appname%>.ofReviewsCurrent}}</td>
   </tr>
   </tbody>
 </table>

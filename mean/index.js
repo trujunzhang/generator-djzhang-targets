@@ -13,7 +13,9 @@ module.exports = generators.Base.extend({
         templateContext = {
           appname: this.appname,
           appclassname: this.appclassname,
-          appmodels: this.appmodels
+          appmodels: this.appmodels,
+          appths: this.appths,
+          apptds:this.apptds
         };
     var projectName = "/_" + this.appname + "s";
 
@@ -93,12 +95,28 @@ module.exports = generators.Base.extend({
     this.appname = answers.name;
     this.appclassname = answers.classname;
     this.appmodels = this._makeModelCode(answers.models);
+    this.appths = this._makeTableTHs(answers.models);
+    this.apptds = this._makeTableTDs(answers.models, answers.name);
     callback();
+  },
+  _makeTableTHs: function (models) {
+    var contents = [];
+    models.split(',').forEach(function (item) {
+      contents.push('<th>' + item + '</th>');
+    });
+    return contents.join(',');
+  },
+  _makeTableTDs: function (models, appname) {
+    var contents = [];
+    models.split(',').forEach(function (item) {
+      contents.push('<td><%= ' + appname + '.' + item + ' %></td>');
+    });
+    return contents.join(',');
   },
   _makeModelCode: function (models) {
     var contents = [];
     models.split(',').forEach(function (item) {
-      contents.push((item + ':{type:String,default:""}'));
+      contents.push(item + ':{type:String,default:""}');
     });
     return contents.join(',');
   },
