@@ -18,12 +18,9 @@ module.exports = generators.Base.extend({
     var projectName = "/_" + this.appname;
 
     mkdirp(appDir + projectName);
-    mkdirp(appDir + projectName + projectName);
 
-    this.fs.copy(this.sourceRoot() + "/*", destRoot + projectName);
-    this.fs.copy(this.sourceRoot() + "/.gitignore", destRoot + projectName + "/.gitignore");
-    this.fs.copy(this.sourceRoot() + "/debug/*", destRoot + projectName + "/debug");
-    this.fs.copy(this.sourceRoot() + "/spider/**/*", destRoot + projectName + projectName);
+    // First of all, copy all template files to dest folder.
+    this.fs.copy(this.sourceRoot() + "/**/*", destRoot + projectName);
 
     var spiders = {
       "source": "/spider/spiders",
@@ -85,17 +82,17 @@ module.exports = generators.Base.extend({
       spiders
     ];
 
-    files.forEach(function (entry) {
-      var _value = entry.value;
-      _value.forEach(function (file) {
-        this.fs.copyTpl(this.sourceRoot() + entry.source + "/" + file, destRoot + projectName + entry.dest + "/" + file, templateContext);
-      }, this);
-    }, this);
-
-    spiders.value.forEach(function (file, index) {
-      var rename = spiders.renames[index];
-      this.fs.move(destRoot + projectName + spiders.dest + "/" + file, destRoot + projectName + spiders.dest + "/" + rename);
-    }, this);
+    // files.forEach(function (entry) {
+    //   var _value = entry.value;
+    //   _value.forEach(function (file) {
+    //     this.fs.copyTpl(this.sourceRoot() + entry.source + "/" + file, destRoot + projectName + entry.dest + "/" + file, templateContext);
+    //   }, this);
+    // }, this);
+    //
+    // spiders.value.forEach(function (file, index) {
+    //   var rename = spiders.renames[index];
+    //   this.fs.move(destRoot + projectName + spiders.dest + "/" + file, destRoot + projectName + spiders.dest + "/" + rename);
+    // }, this);
   },
 
 
@@ -148,7 +145,7 @@ module.exports = generators.Base.extend({
     this.config.save();
   },
   writing: function () {
-    // this._createProjectFileSystem();
+    this._createProjectFileSystem();
   },
   install: function () {
   }
