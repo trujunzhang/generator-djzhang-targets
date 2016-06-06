@@ -55,10 +55,11 @@ module.exports = generators.Base.extend({
       ]
     };
 
-    files.sources.forEach(function (entry, index) {
-      var dest = files.dests[index];
-      this.fs.copyTpl(this.sourceRoot() + entry, destRoot + projectName + dest, templateContext);
-    }, this);
+    for (var i = 0, len = files.sources.length; i < len; i++) {
+      var source = files.sources[i];
+      var dest = files.dests[i];
+      this.fs.copyTpl(this.sourceRoot() + '/' + source, destRoot + projectName + '/' + dest, templateContext);
+    }
   },
 
 
