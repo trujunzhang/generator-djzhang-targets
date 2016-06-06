@@ -1,0 +1,22 @@
+<div class="row" id="main-container">
+  <div class='container' id="base-panel" data-ctrl="itunes" data-ng-init="vm.getItunes()">
+
+    <div class="row">
+      <div class="row cases-export-panel"
+           ng-include="'/modules/_itunes/client/views/_list-banner.client.view.html'"></div>
+    </div>
+
+    <div class="row">
+      <div class="table-responsive" ng-include="'/modules/_itunes/client/views/_list-table.client.view.html'"></div>
+    </div>
+
+    <div class="row text-center">
+      <div class="pagination">
+        <uib-pagination
+          total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="10">
+        </uib-pagination>
+      </div>
+    </div>
+
+  </div>
+</div>
