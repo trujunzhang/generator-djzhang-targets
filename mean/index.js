@@ -135,19 +135,11 @@ module.exports = generators.Base.extend({
     callback();
   },
   _makeModelCode: function (models) {
-    var array = models.split(',');
     var contents = [];
-    array.forEach(function (item) {
-      var tmp = item +
-          ": {" +
-          "type: String," +
-          "default: ''" +
-          "}";
-      contents.push(tmp);
+    models.split(',').forEach(function (item) {
+      contents.push((item + ": {type: String,default: ''}"));
     });
-    var result = contents.join(',');
-    console.log("array's length: " + array.length + ";first is: " + array[0]);
-    console.log("content: " + result);
+    return contents.join(',');
   },
   prompting: function () {
     var done = this.async();
