@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('itunes')
-        .controller('ItunesListController', ItunesListController);
+        .module('<%= appname%>s')
+        .controller('<%= appclassname%>sListController', <%= appclassname%>sListController);
 
-    ItunesListController.$inject = ['ItunesService', '$stateParams', '$http'];
+    <%= appclassname%>sListController.$inject = ['<%= appclassname%>sService', '$stateParams', '$http'];
 
-    function ItunesListController(ItunesService, $stateParams, $http) {
+    function <%= appclassname%>sListController(<%= appclassname%>sService, $stateParams, $http) {
         var vm = this;
 
         vm.totalItems = 0;
@@ -18,12 +18,12 @@
         };
 
         vm.pageChanged = function () {
-            vm.getItunes();
+            vm.get<%= appclassname%>s();
         };
 
-        vm.getItunes = function () {
-            $http.get('api/itunesList/' + vm.currentPage).success(function (response) {
-                vm.itunes = response;
+        vm.get<%= appclassname%>s = function () {
+            $http.get('api/<%= appname%>sList/' + vm.currentPage).success(function (response) {
+                vm.<%= appname%>s = response;
             }).error(function (response) {
                 vm.error = response.message;
             });

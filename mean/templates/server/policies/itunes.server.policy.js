@@ -9,47 +9,47 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Itunes Permissions
+ * Invoke <%= appclassname%>s Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/itunes',
+      resources: '/api/<%= appname%>s',
       permissions: '*'
     }, {
-      resources: '/api/itunes/:ituneId',
+      resources: '/api/<%= appname%>s/:<%= appname%>Id',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/itunes',
+      resources: '/api/<%= appname%>s',
       permissions: ['get', 'post']
     }, {
-      resources: '/api/itunes/:ituneId',
+      resources: '/api/<%= appname%>s/:<%= appname%>Id',
       permissions: ['get']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/itunes',
+      resources: '/api/<%= appname%>s',
       permissions: ['get']
     }, {
-      resources: '/api/itunes/:ituneId',
+      resources: '/api/<%= appname%>s/:<%= appname%>Id',
       permissions: ['get']
     }]
   }]);
 };
 
 /**
- * Check If Itunes Policy Allows
+ * Check If <%= appclassname%>s Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an itune is being processed and the current user created it then allow any manipulation
-  if (req.itune && req.user && req.itune.user && req.itune.user.id === req.user.id) {
+  // If an <%= appname%> is being processed and the current user created it then allow any manipulation
+  if (req.<%= appname%> && req.user && req.<%= appname%>.user && req.<%= appname%>.user.id === req.user.id) {
     return next();
   }
 

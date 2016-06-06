@@ -10,21 +10,21 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="itune in vm.itunes">
+  <tr ng-repeat="<%= appname%> in vm.<%= appname%>s">
     <td style="width:120px;">
-      <a href="{{itune.url}}">
-        <img alt="Icon175x175" class="img-responsive" ng-src="{{itune.thumbnail}}" id="thumbnail">
+      <a href="{{<%= appname%>.url}}">
+        <img alt="Icon175x175" class="img-responsive" ng-src="{{<%= appname%>.thumbnail}}" id="thumbnail">
       </a>
     </td>
-    <td>{{itune.version}}</td>
-    <td>{{itune.appLastUpdated}}</td>
+    <td>{{<%= appname%>.version}}</td>
+    <td>{{<%= appname%>.appLastUpdated}}</td>
     <td>
-      <a href="{{itune.website}}">
-        <span>{{itune.developer}}</span>
+      <a href="{{<%= appname%>.website}}">
+        <span>{{<%= appname%>.developer}}</span>
       </a>
     </td>
-    <td>{{itune.ofReviews}}</td>
-    <td>{{itune.ofReviewsCurrent}}</td>
+    <td>{{<%= appname%>.ofReviews}}</td>
+    <td>{{<%= appname%>.ofReviewsCurrent}}</td>
   </tr>
   </tbody>
 </table>

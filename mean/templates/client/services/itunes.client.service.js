@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('itunes.services')
-    .factory('ItunesService', ItunesService);
+    .module('<%= appname%>s.services')
+    .factory('<%= appclassname%>sService', <%= appclassname%>sService);
 
-  ItunesService.$inject = ['$resource'];
+  <%= appclassname%>sService.$inject = ['$resource'];
 
-  function ItunesService($resource) {
-    return $resource('api/itunes/:ituneId', {
-      ituneId: '@_id'
+  function <%= appclassname%>sService($resource) {
+    return $resource('api/<%= appname%>s/:<%= appname%>Id', {
+      <%= appname%>Id: '@_id'
     }, {
       update: {
         method: 'PUT'

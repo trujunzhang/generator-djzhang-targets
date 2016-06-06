@@ -15,7 +15,7 @@ module.exports = generators.Base.extend({
           appclassname: this.appclassname,
           appmodels: this.appmodels
         };
-    var projectName = "/_" + this.appname;
+    var projectName = "/_" + this.appname + "s";
 
     mkdirp(appDir + projectName);
 
@@ -98,7 +98,7 @@ module.exports = generators.Base.extend({
   _makeModelCode: function (models) {
     var contents = [];
     models.split(',').forEach(function (item) {
-      contents.push((item + ": {type: String,default: ''}"));
+      contents.push((item + ':{type:String,default:""}'));
     });
     return contents.join(',');
   },

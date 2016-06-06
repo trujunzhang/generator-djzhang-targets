@@ -1,13 +1,13 @@
 <div class="row" id="main-container">
-  <div class='container' id="base-panel" data-ctrl="itunes" data-ng-init="vm.getItunes()">
+  <div class='container' id="base-panel" data-ctrl="<%= appname%>s" data-ng-init="vm.get<%= appclassname%>s()">
 
     <div class="row">
       <div class="row cases-export-panel"
-           ng-include="'/modules/_itunes/client/views/_list-banner.client.view.html'"></div>
+           ng-include="'/modules/_<%= appname%>s/client/views/_list-banner.client.view.html'"></div>
     </div>
 
     <div class="row">
-      <div class="table-responsive" ng-include="'/modules/_itunes/client/views/_list-table.client.view.html'"></div>
+      <div class="table-responsive" ng-include="'/modules/_<%= appname%>s/client/views/_list-table.client.view.html'"></div>
     </div>
 
     <div class="row text-center">

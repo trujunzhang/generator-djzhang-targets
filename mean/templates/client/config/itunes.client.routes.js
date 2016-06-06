@@ -2,25 +2,25 @@
     'use strict';
 
     angular
-        .module('itunes.routes')
+        .module('<%= appname%>s.routes')
         .config(routeConfig);
 
     routeConfig.$inject = ['$stateProvider'];
 
     function routeConfig($stateProvider) {
         $stateProvider
-            .state('itunes', {
+            .state('<%= appname%>s', {
                 abstract: true,
-                url: '/itunes',
+                url: '/<%= appname%>s',
                 template: '<ui-view/>'
             })
-            .state('itunes.List', {
+            .state('<%= appname%>s.List', {
                 url: '',
-                templateUrl: 'modules/_itunes/client/views/list-itunes.client.view.html',
-                controller: 'ItunesListController',
+                templateUrl: 'modules/_<%= appname%>s/client/views/list-<%= appname%>s.client.view.html',
+                controller: '<%= appclassname%>sListController',
                 controllerAs: 'vm',
                 data: {
-                    pageTitle: 'Itunes List'
+                    pageTitle: '<%= appclassname%>s List'
                 },
                 // default uri params
                 params: {
@@ -29,17 +29,17 @@
             });
     }
 
-    getItune.$inject = ['$stateParams', 'ItunesService'];
+    get<%= appclassname%>.$inject = ['$stateParams', '<%= appclassname%>sService'];
 
-    function getItune($stateParams, ItunesService) {
-        return ItunesService.get({
-            ituneId: $stateParams.ituneId
+    function get<%= appclassname%>($stateParams, <%= appclassname%>sService) {
+        return <%= appclassname%>sService.get({
+            <%= appname%>Id: $stateParams.<%= appname%>Id
         }).$promise;
     }
 
-    newItune.$inject = ['ItunesService'];
+    new<%= appclassname%>.$inject = ['<%= appclassname%>sService'];
 
-    function newItune(ItunesService) {
-        return new ItunesService();
+    function new<%= appclassname%>(<%= appclassname%>sService) {
+        return new <%= appclassname%>sService();
     }
 }());

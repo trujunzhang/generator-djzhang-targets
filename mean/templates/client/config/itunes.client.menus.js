@@ -2,29 +2,29 @@
   'use strict';
 
   angular
-    .module('itunes')
+    .module('<%= appname%>s')
     .run(menuConfig);
 
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
-      title: 'Itunes',
-      state: 'itunes',
+      title: '<%= appclassname%>s',
+      state: '<%= appname%>s',
       type: 'dropdown',
       roles: ['*']
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'itunes', {
-      title: 'List Itunes',
-      state: 'itunes.list'
+    menuService.addSubMenuItem('topbar', '<%= appname%>s', {
+      title: 'List <%= appclassname%>s',
+      state: '<%= appname%>s.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'itunes', {
-      title: 'Create Itune',
-      state: 'itunes.create',
+    menuService.addSubMenuItem('topbar', '<%= appname%>s', {
+      title: 'Create <%= appclassname%>',
+      state: '<%= appname%>s.create',
       roles: ['user']
     });
   }
