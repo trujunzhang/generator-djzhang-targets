@@ -20,10 +20,10 @@ module.exports = generators.Base.extend({
     mkdirp(appDir + projectName);
 
     // First of all, copy all template files to dest folder.
-    this.fs.copy(this.sourceRoot() + "/**/*", destRoot + projectName);
+    // this.fs.copy(this.sourceRoot() + "/**/*", destRoot + projectName);
 
-    var spiders = {
-      "value": [
+    var files = {
+      "sources": [
         "client/config/itunes.client.menus.js",
         "client/config/itunes.client.routes.js",
         "client/controllers/list-itunes.client.controller.js",
@@ -38,7 +38,7 @@ module.exports = generators.Base.extend({
         "server/policies/itunes.server.policy.js",
         "server/routes/itunes.server.routes.js"
       ],
-      "renames": [
+      "dests": [
         "client/config/" + this.appname + "s.client.menus.js",
         "client/config/" + this.appname + "s.client.routes.js",
         "client/controllers/list-" + this.appname + "s.client.controller.js",
@@ -51,21 +51,14 @@ module.exports = generators.Base.extend({
         "server/controllers/" + this.appname + "s.server.controller.js",
         "server/models/" + this.appname + ".server.model.js",
         "server/policies/" + this.appname + "s.server.policy.js",
-        "server/routes/" + this.appname + "s.server.routes.js",
+        "server/routes/" + this.appname + "s.server.routes.js"
       ]
     };
 
-    // files.forEach(function (entry) {
-    //   var _value = entry.value;
-    //   _value.forEach(function (file) {
-    //     this.fs.copyTpl(this.sourceRoot() + entry.source + "/" + file, destRoot + projectName + entry.dest + "/" + file, templateContext);
-    //   }, this);
-    // }, this);
-    //
-    // spiders.value.forEach(function (file, index) {
-    //   var rename = spiders.renames[index];
-    //   this.fs.move(destRoot + projectName + spiders.dest + "/" + file, destRoot + projectName + spiders.dest + "/" + rename);
-    // }, this);
+    files.sources.forEach(function (entry, index) {
+      var dest = files.dests[index];
+      this.fs.copyTpl(this.sourceRoot() + entry, destRoot + projectName + dest, templateContext);
+    }, this);
   },
 
 
