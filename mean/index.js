@@ -15,7 +15,7 @@ module.exports = generators.Base.extend({
           appclassname: this.appclassname,
           appmodels: this.appmodels,
           appths: this.appths,
-          apptds:this.apptds
+          apptds: this.apptds
         };
     var projectName = "/_" + this.appname + "s";
 
@@ -104,14 +104,14 @@ module.exports = generators.Base.extend({
     models.split(',').forEach(function (item) {
       contents.push('<th>' + item + '</th>');
     });
-    return contents.join(',');
+    return contents.join('');
   },
   _makeTableTDs: function (models, appname) {
     var contents = [];
     models.split(',').forEach(function (item) {
-      contents.push('<td><%= ' + appname + '.' + item + ' %></td>');
+      contents.push('<td>{{' + appname + '.' + item + '}}</td>');
     });
-    return contents.join(',');
+    return contents.join('');
   },
   _makeModelCode: function (models) {
     var contents = [];
