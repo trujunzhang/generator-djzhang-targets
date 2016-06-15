@@ -35,7 +35,7 @@ class <%= appclassname%>sSpider(scrapy.Spider):
                                                          )
 
     def parse(self, response):
-        self._crawl_parser.parse_paginate(response.url, response)
+        self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
 
     def parse_detail(self, response):
         item = self._crawl_parser.parse(response.url, response)
