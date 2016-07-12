@@ -14,10 +14,10 @@ class HistoryDatabase(MysqlDatabase):
         sql = """ SELECT ads_id FROM {} WHERE model_id = '{}'""".format(self.collection_name, item['model_id'])
         _ads_id = self._get_row_id(sql, self.collection_name)
         if _ads_id:
-            logging.debug("HarajHistory already exist!")
+            logging.debug("<%= appclassname%>jHistory already exist!")
         else:
             self._insert_for_history(item)
-            logging.debug("HarajHistory added to database successfully!")
+            logging.debug("<%= appclassname%>History added to database successfully!")
 
     def _insert_for_history(self, item):
         _excep = None
