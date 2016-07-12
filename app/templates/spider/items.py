@@ -7,6 +7,42 @@
 
 import scrapy
 
+class CacheItem(scrapy.Item):
+    model_id = scrapy.Field()
+    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
+    url_from = scrapy.Field()
+
+    url = scrapy.Field()
+    created_at = scrapy.Field()
+
+    @classmethod
+    def get_default(self, model_id, url, url_from):
+        return CacheItem(
+            model_id=model_id,
+            url_from=url_from,
+            url=url,
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
+        )
+
+class HistoryItem(scrapy.Item):
+    # the same as ads(table).id_ads
+    ads_id = scrapy.Field()
+    model_id = scrapy.Field()
+
+    url = scrapy.Field()
+    created_at = scrapy.Field()
+
+    @classmethod
+    def get_default(self, url, id_ads, url_from):
+        model_id = CrawlUtils.get_model_id_by_url_from(url, url_from)
+        return HistoryItem(
+            ads_id=id_ads,
+            model_id=model_id,
+            url=url,
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+        )
+
+
 
 class <%= appclassname%>(scrapy.Item):
     url = scrapy.Field()
