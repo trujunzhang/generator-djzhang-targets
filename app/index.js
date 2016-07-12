@@ -59,7 +59,6 @@ module.exports = generators.Base.extend({
           "database_factory.py",
           "items.py",
           "main.py",
-          "parser_factory.py",
           "settings.py"
         ]
       },
