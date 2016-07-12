@@ -60,7 +60,6 @@ module.exports = generators.Base.extend({
                     "items.py",
                     "main.py",
                     "parser_factory.py",
-                    "pipelines.py",
                     "settings.py"
                 ]
             },
