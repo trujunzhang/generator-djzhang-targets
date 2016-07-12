@@ -25,9 +25,9 @@ failure,
 
 create database <%= appname%>;
 
-grant all on <%= appname%>.* to '<%= appname%>' identified by '<%= appname%>720';
+grant all on <%= appname%>.* to 'cw<%= appname%>' identified by 'cw<%= appname%>720';
 
-mysql -u <%= appname%> -p '<%= appname%>720' <%= appname%>
+mysql -u cw<%= appname%> -p 'cw<%= appname%>720' <%= appname%>
 
 # scrape issues
 
