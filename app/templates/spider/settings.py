@@ -120,4 +120,4 @@ SQL_PASSWD = 'cw<%= appname%>720'
 # database_name
 SQL_DB = '<%= appname%>'
 # table_name
-SQL_COLLECTION_NAME = '<%= appname%>'
+SQL_COLLECTION_NAME = '<%= appname%>s'
