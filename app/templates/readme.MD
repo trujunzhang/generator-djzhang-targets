@@ -1,4 +1,11 @@
-	
+# Installation
+## Python == 2.7.11
+
+pip freeze > requirements.txt
+
+pip install -r requirements.txt
+
+
 scrapy crawl <%= appname%>
 scrapy crawl <%= appname%>_browser
 
