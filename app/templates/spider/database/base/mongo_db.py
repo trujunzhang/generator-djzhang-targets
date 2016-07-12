@@ -2,7 +2,7 @@ import logging
 
 import MySQLdb
 
-from cwharaj.database.base.base_db import BaseDatabase
+from cw<%= appname%>.database.base.base_db import BaseDatabase
 
 
 class MongoDatabase(BaseDatabase):
