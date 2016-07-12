@@ -34,9 +34,15 @@ class <%= appclassname%>sDebugSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(<%= appclassname%>sDebugSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
+                                                               args,
+                                                               host=crawler.settings.get('SQL_HOST'),
+                                                               port=crawler.settings.get('SQL_PORT'),
+                                                               user=crawler.settings.get('SQL_USER'),
+                                                               passwd=crawler.settings.get('SQL_PASSWD'),
+                                                               db=crawler.settings.get('SQL_DB'),
+                                                               collection_name=crawler.settings.get(
+                                                                   'SQL_COLLECTION_NAME')
+                                                               )
 
     def parse(self, response):
         item = self._crawl_parser.parse(response.url, response)
