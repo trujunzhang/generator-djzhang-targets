@@ -67,7 +67,6 @@ module.exports = generators.Base.extend({
                 "source": "/spider/database",
                 "dest": "/" + projectName + "/database",
                 "value": [
-                    "base_db.py",
                     "cache_db.py",
                     "history_db.py",
                     "item_db.py"
