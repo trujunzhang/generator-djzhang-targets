@@ -3,7 +3,7 @@
 
 var spiders = {
   "source": "/spider/spiders",
-  "dest": "/" + projectName + "/spiders",
+  "dest": "/spiders",
   "value": [
     "app_browser_spider.py",
     "app_spider.py",
@@ -29,7 +29,7 @@ var files = [
   },
   {
     "source": "/spider",
-    "dest": "/" + projectName,
+    "dest": "",
     "value": [
       "database_factory.py",
       "items.py",
@@ -39,14 +39,14 @@ var files = [
   },
   {
     "source": "/spider/tests",
-    "dest": "/" + projectName + "/tests",
+    "dest":  "/tests",
     "value": [
       "test_mysql_db.py"
     ]
   },
   {
     "source": "/spider/database",
-    "dest": "/" + projectName + "/database",
+    "dest":  "/database",
     "value": [
       "cache_db.py",
       "history_db.py",
@@ -55,7 +55,7 @@ var files = [
   },
   {
     "source": "/spider/database/base",
-    "dest": "/" + projectName + "/database/base",
+    "dest":  "/database/base",
     "value": [
       "mongo_db.py",
       "mysql_db.py"
@@ -63,7 +63,7 @@ var files = [
   },
   {
     "source": "/spider/parser",
-    "dest": "/" + projectName + "/parser",
+    "dest":  "/parser",
     "value": [
       "base_parser.py",
       "browse_parser.py",
