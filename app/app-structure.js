@@ -13,8 +13,7 @@ var spiders = {
 };
 var files = [
   {
-    "source": "",
-    "dest": "",
+    "folder": "",
     "value": [
       "readme.MD",
       "scrapy.cfg",
@@ -22,49 +21,11 @@ var files = [
     ]
   },
   {
-    "source": "/spider",
-    "dest": "",
+    "folder": "/db",
     "value": [
-      "database_factory.py",
-      "items.py",
-      "main.py",
-      "settings.py"
+      "seed.sql"
     ]
-  },
-  {
-    "source": "/spider/tests",
-    "dest": "/tests",
-    "value": [
-      "test_mysql_db.py"
-    ]
-  },
-  {
-    "source": "/spider/database",
-    "dest": "/database",
-    "value": [
-      "cache_db.py",
-      "history_db.py",
-      "item_db.py"
-    ]
-  },
-  {
-    "source": "/spider/database/base",
-    "dest": "/database/base",
-    "value": [
-      "mongo_db.py",
-      "mysql_db.py"
-    ]
-  },
-  {
-    "source": "/spider/parser",
-    "dest": "/parser",
-    "value": [
-      "base_parser.py",
-      "browse_parser.py",
-      "response_parser.py"
-    ]
-  },
-  spiders
+  }
 ];
 module.exports = {
   spiders: spiders,

@@ -21,15 +21,26 @@ module.exports = generators.Base.extend({
 
     var destProjectRoot = destRoot + projectName;
 
-    this.fs.copy(this.sourceRoot() + "/*/**", destProjectRoot);
-    this.fs.copy(this.sourceRoot() + "/.gitignore", destProjectRoot + "/.gitignore");
+    this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
+    // this.fs.copy(sourceRoot + "/*/**", destProjectRoot);
 
     structure.files.forEach(function (entry) {
       var _value = entry.value;
       _value.forEach(function (file) {
-        this.fs.copyTpl(this.sourceRoot() + entry.source + "/" + file, destProjectRoot + entry.dest + "/" + file, templateContext);
+        this.fs.copyTpl(sourceRoot + entry.folder + "/" + file, destProjectRoot + entry.folder + "/" + file, templateContext);
       }, this);
     }, this);
+
+    // recursive(sourceRoot, ['readme.MD', 'scrapy.cfg', '*.py'], function (err, files) {
+    //   files.forEach(function (element, index, array) {
+    //     var dest = destProjectRoot + element.replace(sourceRoot, '');
+    //     this.log(destProjectRoot);
+    //   }.bind(this));
+    //   // Files is an array of filename
+    //   // this.log(err);
+    //   // this.log(files);
+    // }.bind(this));
+
 
     // spiders.value.forEach(function (file, index) {
     //   var rename = spiders.renames[index];
@@ -65,13 +76,6 @@ module.exports = generators.Base.extend({
     return prompts;
   },
   initializing: function () {
-    this.log(this.sourceRoot());
-    recursive(this.sourceRoot(), ['readme.MD','scrapy.cfg', '*.py'], function (err, files) {
-      // Files is an array of filename
-      this.log(err);
-      this.log(files);
-    }.bind(this));
-
     var message = chalk.yellow.bold("Welcome to Scrapy ") + chalk.yellow('A popular spider to crawling with');
     this.log(yosay(message, {maxLength: 17}));
   },
