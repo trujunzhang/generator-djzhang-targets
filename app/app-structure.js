@@ -23,6 +23,9 @@ var spiders = {
     "/extensions/rpc/wordpress_xml_rpc_utils.py",
     "/extensions/base_parser.py",
     "/extensions/dailyo_parser.py",
+    "/htmls/details_pages.py",
+      '/spiders/'
+
   ]
 };
 var files = [
