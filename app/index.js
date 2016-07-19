@@ -3,6 +3,7 @@
 var generators = require('yeoman-generator'),
     mkdirp = require('mkdirp'),
     yosay = require('yosay'),
+    recursive = require('recursive-readdir'),
     structure = require('./app-structure'),
     chalk = require('chalk');
 
@@ -64,6 +65,13 @@ module.exports = generators.Base.extend({
     return prompts;
   },
   initializing: function () {
+    this.log(this.sourceRoot());
+    recursive(this.sourceRoot(), ['readme.MD','scrapy.cfg', '*.py'], function (err, files) {
+      // Files is an array of filename
+      this.log(err);
+      this.log(files);
+    }.bind(this));
+
     var message = chalk.yellow.bold("Welcome to Scrapy ") + chalk.yellow('A popular spider to crawling with');
     this.log(yosay(message, {maxLength: 17}));
   },
