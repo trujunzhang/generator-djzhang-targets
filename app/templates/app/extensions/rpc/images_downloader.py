@@ -59,4 +59,4 @@ class ImagesDownload(object):
         if os.path.exists(image_location):
             os.remove(image_location)
         else:
-            logging.debug("Sorry, I can not remove %s file.".format(image_location))
+            logging.debug("Sorry, I can not remove {} file.".format(image_location))

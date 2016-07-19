@@ -34,49 +34,18 @@ module.exports = generators.Base.extend({
 
     var appRoot = sourceRoot + '/app';
 
-    // function ignoreFunc(file, stats) {
-    //   // `file` is the absolute path to the file, and `stats` is an `fs.Stats`
-    //   // object returned from `fs.lstat()`.
-    //   return file.includes("database");
-    // }
+    structure.spiders.files.forEach(function (file) {
+      this.fs.copyTpl(appRoot + file, destProjectRoot + projectName + file, templateContext);
+    }, this);
 
-    // this._copyTplFolder(appRoot, appRoot + '/utils', destProjectRoot + projectName, templateContext);
-
-    // recursive(appRoot, ['*.py'], function (err, files) {
-    //   files.forEach(function (element, index, array) {
-    //     var abspath = element.replace(appRoot, '');
-    //     var dest = destProjectRoot + projectName + abspath;
-    //     // this.log(dest);
-    //     this.fs.copyTpl(element, dest, templateContext);
-    //   }.bind(this));
-    //   // Files is an array of filename
-    //   // this.log(err);
-    //   // this.log(files);
-    // }.bind(this));
 
     // spiders.value.forEach(function (file, index) {
     //   var rename = spiders.renames[index];
     //   this.fs.move(destProjectRoot + spiders.dest + "/" + file, destProjectRoot + spiders.dest + "/" + rename);
     // }, this);
 
-    // For debug
-    structure.spiders.files.forEach(function (file) {
-      this.fs.copyTpl(appRoot + file, destProjectRoot + file, templateContext);
-    }, this);
   },
 
-  _copyTplFolder: function (appRoot, folder, dest, templateContext) {
-    this.log(folder);
-    recursive(folder, function (err, files) {
-      this.log(files);
-      files.forEach(function (element, index, array) {
-        var abspath = element.replace(appRoot, '');
-        var dest = dest + abspath;
-        // this.log(dest);
-        this.fs.copyTpl(element, dest, templateContext);
-      }.bind(this));
-    }.bind(this));
-  },
 
   _getPrompts: function () {
     var prompts = [
