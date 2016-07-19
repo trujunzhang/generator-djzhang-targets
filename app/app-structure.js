@@ -9,12 +9,6 @@ var spiders = {
     "app_spider.py",
     "app_browser_debug_spider.py",
     "app_debug_spider.py"
-  ],
-  "renames": [
-    "_browser_spider.py",
-    "_spider.py",
-    "_browser_debug_spider.py",
-    "_debug_spider.py"
   ]
 };
 var files = [
