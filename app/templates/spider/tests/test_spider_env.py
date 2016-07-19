@@ -4,8 +4,7 @@ import unittest
 
 from envparse import env
 
-
-class PoliticlEnvTest(unittest.TestCase):
+class SpiderEnvTest(unittest.TestCase):
     def test_politicl_env(self):
         self.assertEqual(env.str('WD_USER'), 'trujunzhang')
         self.assertEqual(env.str('WD_PASSWD'), 'wanghao720')
