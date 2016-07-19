@@ -21,32 +21,29 @@ module.exports = generators.Base.extend({
 
     var destProjectRoot = destRoot + projectName;
 
-    this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
-    // this.fs.copy(sourceRoot + "/*/**", destProjectRoot);
+    var appRoot = sourceRoot + '/app';
 
-    structure.files.forEach(function (entry) {
-      var _value = entry.value;
-      _value.forEach(function (file) {
-        this.fs.copyTpl(sourceRoot + entry.folder + "/" + file, destProjectRoot + entry.folder + "/" + file, templateContext);
-      }, this);
+    // this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
+
+    // structure.spiders.files.forEach(function (entry) {
+    //   var _value = entry.value;
+    //   _value.forEach(function (file) {
+    //     this.fs.copyTpl(sourceRoot + entry.folder + "/" + file, destProjectRoot + entry.folder + "/" + file, templateContext);
+    //   }, this);
+    // }, this);
+
+    structure.spiders.files.forEach(function (file) {
+      this.fs.copyTpl(appRoot + file, destProjectRoot + file, templateContext);
     }, this);
 
-    // recursive(sourceRoot, ['readme.MD', 'scrapy.cfg', '*.py'], function (err, files) {
-    //   files.forEach(function (element, index, array) {
-    //     var dest = destProjectRoot + element.replace(sourceRoot, '');
-    //     this.log(destProjectRoot);
-    //   }.bind(this));
-    //   // Files is an array of filename
-    //   // this.log(err);
-    //   // this.log(files);
-    // }.bind(this));
-
+    // this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
 
     // spiders.value.forEach(function (file, index) {
     //   var rename = spiders.renames[index];
     //   this.fs.move(destProjectRoot + spiders.dest + "/" + file, destProjectRoot + spiders.dest + "/" + rename);
     // }, this);
   },
+
 
   _getPrompts: function () {
     var prompts = [
@@ -74,30 +71,37 @@ module.exports = generators.Base.extend({
       }
     ];
     return prompts;
-  },
+  }
+
+  ,
   initializing: function () {
     var message = chalk.yellow.bold("Welcome to Scrapy ") + chalk.yellow('A popular spider to crawling with');
     this.log(yosay(message, {maxLength: 17}));
-  },
+  }
+  ,
   _saveAnswers: function (answers, callback) {
     this.appname = answers.name;
     this.appclassname = answers.classname;
     this.appdomain = answers.appdomain;
     this.appstarturl = answers.starturl;
     callback();
-  },
+  }
+  ,
   prompting: function () {
     var done = this.async();
     return this.prompt(this._getPrompts()).then(function (answers) {
       this._saveAnswers(answers, done);
     }.bind(this));
-  },
+  }
+  ,
   configuring: function () {
     this.config.save();
-  },
+  }
+  ,
   writing: function () {
     this._createProjectFileSystem();
-  },
+  }
+  ,
   install: function () {
   }
 });

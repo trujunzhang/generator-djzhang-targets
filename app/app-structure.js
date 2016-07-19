@@ -2,13 +2,11 @@
 
 
 var spiders = {
-  "source": "/spider/spiders",
-  "dest": "/spiders",
-  "value": [
-    "app_browser_spider.py",
-    "app_spider.py",
-    "app_browser_debug_spider.py",
-    "app_debug_spider.py"
+  "files": [
+    // "/utils/crawl_utils.py",
+    // "/utils/page_content_util.py",
+    // "/utils/parser_util.py",
+    "/utils/selenium_utils.py"
   ]
 };
 var files = [
@@ -31,3 +29,7 @@ module.exports = {
   spiders: spiders,
   files: files
 };
+
+
+
+
