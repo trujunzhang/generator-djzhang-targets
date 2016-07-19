@@ -33,6 +33,14 @@ var spiders = {
     "/tests/test_spider_env.py",
     "/tests/test_wd_xml_rpc.py",
     "/tests/test_whole_pages_dispatch.py",
+    "/spiders/dispatch/base_dispatch.py",
+    "/spiders/dispatch/spider_dispatch.py",
+    "/spiders/dispatch/spider_watch_dispatch.py",
+    "/spiders/dispatch/spider_whole_pages_dispatch.py",
+    "/spiders/_politicl_debug_spider.py",
+    "/spiders/politicl_spider.py",
+    "/spiders/politicl_watch_spider.py",
+    "/spiders/politicl_whole_pages_spider.py",
   ]
 };
 var files = [
