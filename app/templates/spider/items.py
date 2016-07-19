@@ -5,81 +5,94 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
-from enum import Enum
-import time
 from datetime import datetime
 
-class WebsiteTypes(Enum):
-    def __str__(self):
-        return str(self.value)
+import scrapy
 
-    @classmethod
-    def get_id_index(self, _url_from):
-        if _url_from == WebsiteTypes.opensooq.value:
-            return 3
-        elif _url_from == WebsiteTypes.mstaml.value:
-            return 1
-        elif _url_from == WebsiteTypes.harajsa.value:
-            return 1
-
-        return -1
-
-    opensooq = "opensooq"
-    mstaml = "mstaml"
-    harajsa = "harajsa"
 
 class CacheItem(scrapy.Item):
-    model_id = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()
 
     url = scrapy.Field()
     created_at = scrapy.Field()
+    thumbnail_url = scrapy.Field()
 
     @classmethod
-    def get_default(self, model_id, url, url_from):
+    def get_default(cls, url, url_from, thumbnail_url=''):
         return CacheItem(
-            model_id=model_id,
             url_from=url_from,
+            thumbnail_url=thumbnail_url,
             url=url,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
         )
 
-class HistoryItem(scrapy.Item):
-    # the same as ads(table).id_ads
-    ads_id = scrapy.Field()
-    model_id = scrapy.Field()
 
+class HistoryItem(scrapy.Item):
     url = scrapy.Field()
     created_at = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, id_ads, url_from):
-        model_id = CrawlUtils.get_model_id_by_url_from(url, url_from)
+    def get_default(cls, url):
         return HistoryItem(
-            ads_id=id_ads,
-            model_id=model_id,
             url=url,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
         )
 
 
+class PageItem(scrapy.Item):
+    """
+    When scraping the whole pages for a website,
+    We imagine that the website have 1000 pages, scrape 10 pages per time from the newest to the oldest.
 
-class <%= appclassname%>(scrapy.Item):
-    url = scrapy.Field()
-    guid = scrapy.Field()
+    page_index variable record the index of the pages currently. Next time page_index will be (page_index + 10)
+    """
+    url_from = scrapy.Field()
+    # Record the current page index
+    page_index = scrapy.Field()
     created_at = scrapy.Field()
-    updated_at = scrapy.Field()
+
+    @classmethod
+    def get_empty_item(cls, url_from):
+        return PageItem(
+            url_from=url_from,
+            page_index=1,
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+        )
+
+    @classmethod
+    def get_default(cls, url_from, page_index):
+        return PageItem(
+            url_from=url_from,
+            page_index=page_index,
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+        )
 
 
-    cluster = scrapy.Field()
-    category = scrapy.Field()
-    price = scrapy.Field()
-    thumbnail = scrapy.Field()
+class WDPost(scrapy.Item):
+    url = scrapy.Field()
     title = scrapy.Field()
-    reviewsNum = scrapy.Field()
-    datePublished = scrapy.Field()
-    website = scrapy.Field()
-    email = scrapy.Field()
-    address = scrapy.Field()
+    image_src = scrapy.Field()
+    content = scrapy.Field()
+
+    url_from = scrapy.Field()
+
+    access_denied_cookie = scrapy.Field()
+
+    # tags list['Unicode']
+    tags = scrapy.Field()
+
+    @classmethod
+    def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie=None):
+        if not image_src:
+            image_src = thumbnail_url
+
+        return WDPost(
+            url=url,
+            url_from=url_from,
+            title=title,
+            image_src=image_src,
+            content=content,
+            tags=tags,
+            access_denied_cookie=access_denied_cookie
+        )

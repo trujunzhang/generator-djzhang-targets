@@ -1,21 +1,21 @@
 from scrapy import cmdline
-import os
+
+from cwpoliticl.scraped_websites import get_crawler_name
 
 
 class Crawler:
     def execute(self, module):
-        para = '--set LOG_FILE={}.log'.format(module)
-        # para = ''
+        # para = '--set LOG_FILE={}.log'.format(module)
+        para = ''
         command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
+
 
 def main():
     utils = Crawler()
 
-    utils.execute("<%= appname%>")
-    # utils.execute("<%= appname%>_debug")
-    # utils.execute("<%= appname%>_browser")
-    # utils.execute("<%= appname%>_browser_debug")
+    utils.execute(get_crawler_name()['name'])
+
 
 if __name__ == '__main__':
     main()
