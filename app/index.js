@@ -23,6 +23,7 @@ module.exports = generators.Base.extend({
 
     this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
     this.fs.copy(sourceRoot + "/*", destProjectRoot);
+    this.fs.copy(sourceRoot + "/app/__init__.py", destProjectRoot + projectName + "/__init__.py");
     this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
 
     var appRoot = sourceRoot + '/app';
