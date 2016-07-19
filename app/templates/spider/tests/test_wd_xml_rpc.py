@@ -4,8 +4,8 @@ import unittest
 
 from wordpress_xmlrpc import Client
 
-from cwpoliticl import settings
-from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
+from cw<%= appname%> import settings
+from cw<%= appname%>.extensions.rpc.images_downloader import ImagesDownload
 
 
 class WDXmlRpcTest(unittest.TestCase):
@@ -14,7 +14,7 @@ class WDXmlRpcTest(unittest.TestCase):
         self.wp = Client(url, settings.WD_USER, settings.WD_PASSWD)
 
         # self.image_link = 'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
-        self.image_link = 'http://localhost:8888/politicl/wp-content/uploads/2016/07/picture-324x160.jpeg'
+        self.image_link = 'http://localhost:8888/<%= appname%>/wp-content/uploads/2016/07/picture-324x160.jpeg'
 
         # def test_get_posts(self):
         #     wp_call = self.wp.call(GetPosts())
@@ -27,8 +27,8 @@ class WDXmlRpcTest(unittest.TestCase):
         #     < WordPressUser: max >
 
     def test_post_image(self):
-        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/politicl/daaf4badb91771a0d23647d713068663'
-        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/politicl'
+        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/<%= appname%>/daaf4badb91771a0d23647d713068663'
+        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/<%= appname%>'
         image_location = ImagesDownload.write_image_cache(self.image_link)
         self.assertIsNotNone(image_location)
 

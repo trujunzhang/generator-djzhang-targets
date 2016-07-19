@@ -5,7 +5,7 @@ from scrapy import Selector
 
 
 class ParserUtils(object):
-    debug_path = '/Users/djzhang/Desktop/upwork-projects/politicl/politicl-crawler-scraper/debug'
+    debug_path = '/Users/djzhang/Desktop/upwork-projects/<%= appname%>/<%= appname%>-crawler-scraper/debug'
 
     @classmethod
     def get_offline_selector(self, url_from, is_pagination=True):

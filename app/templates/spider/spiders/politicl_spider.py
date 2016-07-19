@@ -4,14 +4,14 @@ import logging
 
 import scrapy
 
-from cwpoliticl.items import HistoryItem
+from cw<%= appname%>.items import HistoryItem
 
 
-class PoliticlsSpider(scrapy.Spider):
-    name = "politicl"
+class <%= appclassname%>sSpider(scrapy.Spider):
+    name = "<%= appname%>"
 
     def __init__(self, name=None, **kwargs):
-        from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
+        from cw<%= appname%>.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
                                            kwargs['db'], kwargs['collection_name'])
@@ -19,10 +19,10 @@ class PoliticlsSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
-        from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+        from cw<%= appname%>.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
+        from cw<%= appname%>.spiders.dispatch.spider_dispatch import SpiderDispatch
         self.spider_dispatch = SpiderDispatch()
 
         # Dynamic the domains
@@ -35,11 +35,11 @@ class PoliticlsSpider(scrapy.Spider):
         else:
             logging.debug("Not found the caches currently, the schedulared task end!")
 
-        super(PoliticlsSpider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>sSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(PoliticlsSpider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>sSpider, cls).from_crawler(crawler,
                                                         args,
                                                         host=crawler.settings.get('SQL_HOST'),
                                                         port=crawler.settings.get('SQL_PORT'),

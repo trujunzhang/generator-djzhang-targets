@@ -1,4 +1,4 @@
-from cwpoliticl.spiders.dispatch.base_dispatch import BaseDispatch
+from cw<%= appname%>.spiders.dispatch.base_dispatch import BaseDispatch
 
 
 class SpiderWatchDispatch(BaseDispatch):

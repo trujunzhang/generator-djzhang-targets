@@ -4,8 +4,8 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import posts, media
 
-from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
-from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
+from cw<%= appname%>.extensions.rpc.images_downloader import ImagesDownload
+from cw<%= appname%>.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
 
 
 class WDXmlRPCUtils(object):
@@ -15,7 +15,7 @@ class WDXmlRPCUtils(object):
         super(WDXmlRPCUtils, self).__init__()
 
     def _get_image_downloader(self, item):
-        from cwpoliticl.scraped_websites import WebsiteTypes
+        from cw<%= appname%>.scraped_websites import WebsiteTypes
         if item['url_from'] == WebsiteTypes.theviewspaper.value:
             return TheViewsPaperImagesDownloader()
         else:

@@ -2,14 +2,14 @@
 
 import scrapy
 
-from cwpoliticl.htmls.detail_pages import scraped_detail_pages
-from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, websites_parses, is_pagination, \
+from cw<%= appname%>.htmls.detail_pages import scraped_detail_pages
+from cw<%= appname%>.scraped_websites import WebsiteTypes, websites_allowed_domains, websites_parses, is_pagination, \
     get_crawler_name
 
 
-class PoliticlDebugSpider(scrapy.Spider):
+class <%= appclassname%>DebugSpider(scrapy.Spider):
     url_from = get_crawler_name()['url_from']
-    name = "politicl_debug"
+    name = "<%= appname%>_debug"
 
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
@@ -19,7 +19,7 @@ class PoliticlDebugSpider(scrapy.Spider):
         else:
             self.start_urls = scraped_detail_pages[self.url_from]
 
-        from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
+        from cw<%= appname%>.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
                                            kwargs['db'], kwargs['collection_name'])
@@ -27,16 +27,16 @@ class PoliticlDebugSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
-        from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+        from cw<%= appname%>.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
         self._parser = websites_parses.get(self.url_from)
 
-        super(PoliticlDebugSpider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>DebugSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(PoliticlDebugSpider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>DebugSpider, cls).from_crawler(crawler,
                                                             args,
                                                             host=crawler.settings.get('SQL_HOST'),
                                                             port=crawler.settings.get('SQL_PORT'),

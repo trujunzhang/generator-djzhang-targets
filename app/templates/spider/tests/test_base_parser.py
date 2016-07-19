@@ -2,10 +2,10 @@
 
 import unittest
 
-from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.scraped_websites import WebsiteTypes
-from cwpoliticl.utils.page_content_util import PageContentUtil
-from cwpoliticl.utils.parser_util import ParserUtils
+from cw<%= appname%>.extensions.base_parser import BaseParser
+from cw<%= appname%>.scraped_websites import WebsiteTypes
+from cw<%= appname%>.utils.page_content_util import PageContentUtil
+from cw<%= appname%>.utils.parser_util import ParserUtils
 
 
 class BaseParseTest(unittest.TestCase):

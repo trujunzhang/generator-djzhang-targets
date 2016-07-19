@@ -1,6 +1,6 @@
 import MySQLdb
 
-from cwpoliticl.database.base.base_db import BaseDatabase
+from cw<%= appname%>.database.base.base_db import BaseDatabase
 
 
 class MongoDatabase(BaseDatabase):

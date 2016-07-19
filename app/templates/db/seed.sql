@@ -1,4 +1,4 @@
-CREATE TABLE politicls_cache (
+CREATE TABLE <%= appname%>s_cache (
   `id`            INT(11) NOT NULL AUTO_INCREMENT,
   `url`           TEXT,
   `thumbnail_url` TEXT,
@@ -9,7 +9,7 @@ CREATE TABLE politicls_cache (
   DEFAULT CHARSET = utf8mb4;
 
 
-CREATE TABLE politicls_history (
+CREATE TABLE <%= appname%>s_history (
   `id`         INT(11) NOT NULL AUTO_INCREMENT,
   `url`        TEXT,
   `created_at` DATETIME,

@@ -2,9 +2,9 @@
 
 import unittest
 
-from cwpoliticl.scraped_websites import WebsiteTypes, get_crawler_name
-from cwpoliticl.utils.page_content_util import PageContentUtil
-from cwpoliticl.utils.parser_util import ParserUtils
+from cw<%= appname%>.scraped_websites import WebsiteTypes, get_crawler_name
+from cw<%= appname%>.utils.page_content_util import PageContentUtil
+from cw<%= appname%>.utils.parser_util import ParserUtils
 
 
 class ParagraphsParserTest(unittest.TestCase):

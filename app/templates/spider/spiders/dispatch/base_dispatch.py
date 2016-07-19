@@ -1,4 +1,4 @@
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, websites_parses
+from cw<%= appname%>.scraped_websites import websites_allowed_domains, scraped_websites_pagination, websites_parses
 
 
 class BaseDispatch(object):

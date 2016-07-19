@@ -5,11 +5,11 @@ import logging
 import scrapy
 
 
-class PoliticlsWatchSpider(scrapy.Spider):
-    name = "politicl_whole_pages"
+class <%= appclassname%>sWatchSpider(scrapy.Spider):
+    name = "<%= appname%>_whole_pages"
 
     def __init__(self, name=None, **kwargs):
-        from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
+        from cw<%= appname%>.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
                                            kwargs['db'], kwargs['collection_name'])
@@ -18,7 +18,7 @@ class PoliticlsWatchSpider(scrapy.Spider):
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._page_db = database_factory.get_database(CollectionTypes.page)
 
-        from cwpoliticl.spiders.dispatch.spider_whole_pages_dispatch import SpiderWholePageDispatch
+        from cw<%= appname%>.spiders.dispatch.spider_whole_pages_dispatch import SpiderWholePageDispatch
         self.whole_pages_dispatch = SpiderWholePageDispatch(self._page_db)
 
         # Dynamic the domains and start url.
@@ -29,11 +29,11 @@ class PoliticlsWatchSpider(scrapy.Spider):
         else:
             logging.debug("Not found the page currently, the schedulared task end!")
 
-        super(PoliticlsWatchSpider, self).__init__(name, **kwargs)
+        super(<%= appclassname%>sWatchSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(PoliticlsWatchSpider, cls).from_crawler(crawler,
+        return super(<%= appclassname%>sWatchSpider, cls).from_crawler(crawler,
                                                              args,
                                                              host=crawler.settings.get('SQL_HOST'),
                                                              port=crawler.settings.get('SQL_PORT'),

@@ -1,7 +1,7 @@
 import logging
 
-from cwpoliticl.database.base.mysql_db import MysqlDatabase
-from cwpoliticl.items import PageItem
+from cw<%= appname%>.database.base.mysql_db import MysqlDatabase
+from cw<%= appname%>.items import PageItem
 
 
 class PageDatabase(MysqlDatabase):

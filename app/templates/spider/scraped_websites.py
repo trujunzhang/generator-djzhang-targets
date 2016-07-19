@@ -1,6 +1,6 @@
 from enum import Enum
 
-from cwpoliticl.extensions.dailyo_parser import DailyoParser
+from cw<%= appname%>.extensions.dailyo_parser import DailyoParser
 
 class WebsiteTypes(Enum):
     def __str__(self):
@@ -49,9 +49,9 @@ def get_crawler_name():
 
 
     crawler_names = [
-        "politicl",
-        # "politicl_debug"
-        # "politicl_watch",
+        "<%= appname%>",
+        # "<%= appname%>_debug"
+        # "<%= appname%>_watch",
     ]
 
     return {

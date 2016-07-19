@@ -2,10 +2,10 @@
 
 import unittest
 
-from cwpoliticl import settings
-from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
-from cwpoliticl.scraped_websites import websites_parses, get_crawler_name, is_pagination
-from cwpoliticl.utils.parser_util import ParserUtils
+from cw<%= appname%> import settings
+from cw<%= appname%>.database_factory import DatabaseFactory, CollectionTypes
+from cw<%= appname%>.scraped_websites import websites_parses, get_crawler_name, is_pagination
+from cw<%= appname%>.utils.parser_util import ParserUtils
 
 
 class OfflineParserTest(unittest.TestCase):

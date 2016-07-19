@@ -27,7 +27,7 @@ class PageContentUtil(object):
         return self._get_content(list, max_len, lines)
 
     def _get_content(self, list, max_len, lines):
-        from cwpoliticl.scraped_websites import content_seperator
+        from cw<%= appname%>.scraped_websites import content_seperator
         seperator = content_seperator
 
         content = seperator.join(lines)

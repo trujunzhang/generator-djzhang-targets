@@ -1,6 +1,6 @@
 from scrapy import cmdline
 
-from cwpoliticl.scraped_websites import get_crawler_name
+from cw<%= appname%>.scraped_websites import get_crawler_name
 
 
 class Crawler:

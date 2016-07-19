@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from cwpoliticl.database.base.mysql_db import MysqlDatabase
+from cw<%= appname%>.database.base.mysql_db import MysqlDatabase
 
 
 class ItemDatabase(MysqlDatabase):

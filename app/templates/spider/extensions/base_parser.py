@@ -1,7 +1,7 @@
 import logging
 
-from cwpoliticl.items import CacheItem
-from cwpoliticl.utils.page_content_util import PageContentUtil
+from cw<%= appname%>.items import CacheItem
+from cw<%= appname%>.utils.page_content_util import PageContentUtil
 import urlparse
 from BeautifulSoup import BeautifulSoup
 

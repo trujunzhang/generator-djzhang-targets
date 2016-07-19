@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from cwpoliticl.scraped_websites import WebsiteTypes
+from cw<%= appname%>.scraped_websites import WebsiteTypes
 
 scraped_detail_pages = {
     WebsiteTypes.dailyo: [

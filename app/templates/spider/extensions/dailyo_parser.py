@@ -1,5 +1,5 @@
-from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.items import WDPost
+from cw<%= appname%>.extensions.base_parser import BaseParser
+from cw<%= appname%>.items import WDPost
 
 
 class DailyoParser(BaseParser):
@@ -11,7 +11,7 @@ class DailyoParser(BaseParser):
     }
 
     def __init__(self):
-        from cwpoliticl.scraped_websites import WebsiteTypes
+        from cw<%= appname%>.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.dailyo.value
         super(DailyoParser, self).__init__()
 

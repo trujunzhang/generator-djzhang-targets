@@ -6,26 +6,26 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 
 # run
-scrapy crawl politicl
+scrapy crawl <%= appname%>
 
 # deploy to scrapyd
 
-scrapyd-deploy local -p cwpoliticl
-curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=dnaindia_debug
+scrapyd-deploy local -p cw<%= appname%>
+curl http://localhost:6800/schedule.json -d project=cw<%= appname%> -d spider=dnaindia_debug
 
-scrapyd-deploy droplet -p cwpoliticl
+scrapyd-deploy droplet -p cw<%= appname%>
 
-curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
+curl http://104.236.77.182:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>_watch
 
-scrapyd-deploy client -p cwpoliticl
-curl http://139.59.11.152:6800/schedule.json -d project=cwpoliticl -d spider=politicl
-curl http://139.59.11.152:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
+scrapyd-deploy client -p cw<%= appname%>
+curl http://139.59.11.152:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>
+curl http://139.59.11.152:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>_watch
 
-curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=politicl
-curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
-curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=politicl_whole_pages
+curl http://localhost:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>
+curl http://localhost:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>_watch
+curl http://localhost:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>_whole_pages
 
-*/5 * * * * curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
+*/5 * * * * curl http://104.236.77.182:6800/schedule.json -d project=cw<%= appname%> -d spider=<%= appname%>_watch
 
 ssh root@139.59.11.152 -p 22
 
@@ -39,11 +39,11 @@ failure,
 
 # Create mysql database
 
-create database politicl;
+create database <%= appname%>;
 
-grant all on politicl.* to 'cwpoliticl' identified by 'cwpoliticl720';
+grant all on <%= appname%>.* to 'cw<%= appname%>' identified by 'cw<%= appname%>720';
 
-mysql -u cwpoliticl -p 'cwpoliticl720' politicl
+mysql -u cw<%= appname%> -p 'cw<%= appname%>720' <%= appname%>
 
 # scrape issues
 

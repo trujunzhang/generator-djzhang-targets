@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
+from cw<%= appname%>.extensions.rpc.images_downloader import ImagesDownload
 
 
 class ImagesDownloaderTest(unittest.TestCase):
@@ -26,7 +26,7 @@ class ImagesDownloaderTest(unittest.TestCase):
 
     def test_download_image(self):
         """
-        temp folder: '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/politicl'
+        temp folder: '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/<%= appname%>'
         :return:
         """
         image_location = self.item['downloader'].write_image_cache(self.item)

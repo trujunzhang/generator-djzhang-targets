@@ -1,7 +1,7 @@
 from envparse import env
 
-from cwpoliticl.items import PageItem
-from cwpoliticl.spiders.dispatch.base_dispatch import BaseDispatch
+from cw<%= appname%>.items import PageItem
+from cw<%= appname%>.spiders.dispatch.base_dispatch import BaseDispatch
 
 
 class WholePagesStatus(object):
@@ -83,7 +83,7 @@ class SpiderWholePageDispatch(BaseDispatch):
     def __init__(self, page_db):
         self.page_db = page_db
 
-        from cwpoliticl.scraped_websites import scraped_whole_pages_pagination
+        from cw<%= appname%>.scraped_websites import scraped_whole_pages_pagination
         self.wp_status = WholePagesStatus(scraped_whole_pages_pagination, self.page_db, env.int('scraped_pages_count'))
 
         super(SpiderWholePageDispatch, self).__init__()

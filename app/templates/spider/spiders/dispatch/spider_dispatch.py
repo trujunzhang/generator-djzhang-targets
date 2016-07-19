@@ -1,5 +1,5 @@
-from cwpoliticl.scraped_websites import WebsiteTypes
-from cwpoliticl.spiders.dispatch.base_dispatch import BaseDispatch
+from cw<%= appname%>.scraped_websites import WebsiteTypes
+from cw<%= appname%>.spiders.dispatch.base_dispatch import BaseDispatch
 
 
 class SpiderDispatch(BaseDispatch):

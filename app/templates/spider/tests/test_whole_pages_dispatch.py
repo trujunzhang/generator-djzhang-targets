@@ -2,10 +2,10 @@
 
 import unittest
 
-from cwpoliticl import settings
-from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
-from cwpoliticl.scraped_websites import WebsiteTypes
-from cwpoliticl.spiders.dispatch.spider_whole_pages_dispatch import WholePagesStatus
+from cw<%= appname%> import settings
+from cw<%= appname%>.database_factory import DatabaseFactory, CollectionTypes
+from cw<%= appname%>.scraped_websites import WebsiteTypes
+from cw<%= appname%>.spiders.dispatch.spider_whole_pages_dispatch import WholePagesStatus
 
 
 class WholePagesDispatchTest(unittest.TestCase):

@@ -2,12 +2,12 @@
 
 import unittest
 
-from cwpoliticl.scraped_websites import WebsiteTypes
+from cw<%= appname%>.scraped_websites import WebsiteTypes
 
 
 class DispatchTest(unittest.TestCase):
     def setUp(self):
-        from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
+        from cw<%= appname%>.spiders.dispatch.spider_dispatch import SpiderDispatch
         self.spider_dispatch = SpiderDispatch()
         self.page_url = 'http://indianexpress.com/article/opinion/columns/burhan-wani-death-kashmir-protests-mehbooba-mufti-hurriyat-2909858/'
 

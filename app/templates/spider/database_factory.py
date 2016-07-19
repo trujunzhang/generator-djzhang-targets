@@ -20,28 +20,28 @@ class DatabaseFactory(object):
 
     def get_database(self, collection_type):
         if CollectionTypes.cache == collection_type:
-            from cwpoliticl.database.cache_db import CacheDatabase
+            from cw<%= appname%>.database.cache_db import CacheDatabase
             database = CacheDatabase(host=self.host, port=self.port,
                                      user=self.user, passwd=self.passwd,
                                      db=self.db, collection_name=self.collection_name + '_cache')
             database.open_spider()
             return database
         elif CollectionTypes.history == collection_type:
-            from cwpoliticl.database.history_db import HistoryDatabase
+            from cw<%= appname%>.database.history_db import HistoryDatabase
             history_database = HistoryDatabase(host=self.host, port=self.port,
                                                user=self.user, passwd=self.passwd,
                                                db=self.db, collection_name=self.collection_name + "_history")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.page == collection_type:
-            from cwpoliticl.database.page_db import PageDatabase
+            from cw<%= appname%>.database.page_db import PageDatabase
             page_database = PageDatabase(host=self.host, port=self.port,
                                          user=self.user, passwd=self.passwd,
                                          db=self.db, collection_name=self.collection_name + "_page")
             page_database.open_spider()
             return page_database
         elif CollectionTypes.item == collection_type:
-            from cwpoliticl.database.item_db import ItemDatabase
+            from cw<%= appname%>.database.item_db import ItemDatabase
             return ItemDatabase(host=self.host, port=self.port,
                                 user=self.user, passwd=self.passwd,
                                 db=self.db, collection_name=self.collection_name)

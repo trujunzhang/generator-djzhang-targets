@@ -1,6 +1,6 @@
 import logging
 
-from cwpoliticl.database.base.mysql_db import MysqlDatabase
+from cw<%= appname%>.database.base.mysql_db import MysqlDatabase
 
 
 class HistoryDatabase(MysqlDatabase):
@@ -11,10 +11,10 @@ class HistoryDatabase(MysqlDatabase):
         sql = """ SELECT 1 FROM {} WHERE url = '{}'""".format(self.collection_name, item['url'])
         count = self._get_count(sql, self.collection_name)
         if count:
-            logging.debug("PoliticljHistory already exist!")
+            logging.debug("<%= appclassname%>jHistory already exist!")
         else:
             self._insert_for_history(item)
-            logging.debug("PoliticlHistory added to database successfully!")
+            logging.debug("<%= appclassname%>History added to database successfully!")
 
     def _insert_for_history(self, item):
         _connection = self.get_client()

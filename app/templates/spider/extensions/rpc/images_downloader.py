@@ -3,7 +3,7 @@ import os
 import urllib
 from hashlib import md5
 
-Cache_Folder = 'politicl'
+Cache_Folder = '<%= appname%>'
 
 
 class ImagesDownload(object):
