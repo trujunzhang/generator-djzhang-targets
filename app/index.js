@@ -21,28 +21,14 @@ module.exports = generators.Base.extend({
 
     var destProjectRoot = destRoot + projectName;
 
-    // this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
-
-    // structure.files.forEach(function (entry) {
-    //   var _value = entry.value;
-    //   _value.forEach(function (file) {
-    //     this.fs.copyTpl(sourceRoot + entry.folder + "/" + file, destProjectRoot + entry.folder + "/" + file, templateContext);
-    //   }, this);
-    // }, this);
-
-    // this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
+    this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
+    this.fs.copy(sourceRoot + "/*", destProjectRoot);
+    this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
 
     var appRoot = sourceRoot + '/app';
-
     structure.spiders.files.forEach(function (file) {
       this.fs.copyTpl(appRoot + file, destProjectRoot + projectName + file, templateContext);
     }, this);
-
-
-    // spiders.value.forEach(function (file, index) {
-    //   var rename = spiders.renames[index];
-    //   this.fs.move(destProjectRoot + spiders.dest + "/" + file, destProjectRoot + spiders.dest + "/" + rename);
-    // }, this);
 
   },
 

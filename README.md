@@ -17,6 +17,7 @@ this for files:
 
 ls -d -1 $PWD/*.*
 ls -d -1 $PWD/app/templates/app/tests/*.*
+ls -d -1 $PWD/app/templates/app/spiders/*.*
 this for everything:
 
 ls -d -1 $PWD/**/*
