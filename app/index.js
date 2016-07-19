@@ -3,6 +3,7 @@
 var generators = require('yeoman-generator'),
     mkdirp = require('mkdirp'),
     yosay = require('yosay'),
+    structure = require('./app-structure'),
     chalk = require('chalk');
 
 module.exports = generators.Base.extend({
@@ -110,7 +111,6 @@ module.exports = generators.Base.extend({
       this.fs.move(destRoot + projectName + spiders.dest + "/" + file, destRoot + projectName + spiders.dest + "/" + rename);
     }, this);
   },
-
 
   _getPrompts: function () {
     var prompts = [
