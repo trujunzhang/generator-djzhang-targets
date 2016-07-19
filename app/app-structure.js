@@ -11,10 +11,10 @@ var spiders = {
     "app_debug_spider.py"
   ],
   "renames": [
-    this.appname + "_browser_spider.py",
-    this.appname + "_spider.py",
-    this.appname + "_browser_debug_spider.py",
-    this.appname + "_debug_spider.py"
+    "_browser_spider.py",
+    "_spider.py",
+    "_browser_debug_spider.py",
+    "_debug_spider.py"
   ]
 };
 var files = [
@@ -39,14 +39,14 @@ var files = [
   },
   {
     "source": "/spider/tests",
-    "dest":  "/tests",
+    "dest": "/tests",
     "value": [
       "test_mysql_db.py"
     ]
   },
   {
     "source": "/spider/database",
-    "dest":  "/database",
+    "dest": "/database",
     "value": [
       "cache_db.py",
       "history_db.py",
@@ -55,7 +55,7 @@ var files = [
   },
   {
     "source": "/spider/database/base",
-    "dest":  "/database/base",
+    "dest": "/database/base",
     "value": [
       "mongo_db.py",
       "mysql_db.py"
@@ -63,7 +63,7 @@ var files = [
   },
   {
     "source": "/spider/parser",
-    "dest":  "/parser",
+    "dest": "/parser",
     "value": [
       "base_parser.py",
       "browse_parser.py",
