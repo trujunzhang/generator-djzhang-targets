@@ -21,29 +21,62 @@ module.exports = generators.Base.extend({
 
     var destProjectRoot = destRoot + projectName;
 
-    var appRoot = sourceRoot + '/app';
-
     // this.fs.copy(sourceRoot + "/.gitignore", destProjectRoot + "/.gitignore");
 
-    // structure.spiders.files.forEach(function (entry) {
+    // structure.files.forEach(function (entry) {
     //   var _value = entry.value;
     //   _value.forEach(function (file) {
     //     this.fs.copyTpl(sourceRoot + entry.folder + "/" + file, destProjectRoot + entry.folder + "/" + file, templateContext);
     //   }, this);
     // }, this);
 
-    structure.spiders.files.forEach(function (file) {
-      this.fs.copyTpl(appRoot + file, destProjectRoot + file, templateContext);
-    }, this);
-
     // this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
+
+    var appRoot = sourceRoot + '/app';
+
+    // function ignoreFunc(file, stats) {
+    //   // `file` is the absolute path to the file, and `stats` is an `fs.Stats`
+    //   // object returned from `fs.lstat()`.
+    //   return file.includes("database");
+    // }
+
+    // this._copyTplFolder(appRoot, appRoot + '/utils', destProjectRoot + projectName, templateContext);
+
+    // recursive(appRoot, ['*.py'], function (err, files) {
+    //   files.forEach(function (element, index, array) {
+    //     var abspath = element.replace(appRoot, '');
+    //     var dest = destProjectRoot + projectName + abspath;
+    //     // this.log(dest);
+    //     this.fs.copyTpl(element, dest, templateContext);
+    //   }.bind(this));
+    //   // Files is an array of filename
+    //   // this.log(err);
+    //   // this.log(files);
+    // }.bind(this));
 
     // spiders.value.forEach(function (file, index) {
     //   var rename = spiders.renames[index];
     //   this.fs.move(destProjectRoot + spiders.dest + "/" + file, destProjectRoot + spiders.dest + "/" + rename);
     // }, this);
+
+    // For debug
+    structure.spiders.files.forEach(function (file) {
+      this.fs.copyTpl(appRoot + file, destProjectRoot + file, templateContext);
+    }, this);
   },
 
+  _copyTplFolder: function (appRoot, folder, dest, templateContext) {
+    this.log(folder);
+    recursive(folder, function (err, files) {
+      this.log(files);
+      files.forEach(function (element, index, array) {
+        var abspath = element.replace(appRoot, '');
+        var dest = dest + abspath;
+        // this.log(dest);
+        this.fs.copyTpl(element, dest, templateContext);
+      }.bind(this));
+    }.bind(this));
+  },
 
   _getPrompts: function () {
     var prompts = [
@@ -71,37 +104,30 @@ module.exports = generators.Base.extend({
       }
     ];
     return prompts;
-  }
-
-  ,
+  },
   initializing: function () {
     var message = chalk.yellow.bold("Welcome to Scrapy ") + chalk.yellow('A popular spider to crawling with');
     this.log(yosay(message, {maxLength: 17}));
-  }
-  ,
+  },
   _saveAnswers: function (answers, callback) {
     this.appname = answers.name;
     this.appclassname = answers.classname;
     this.appdomain = answers.appdomain;
     this.appstarturl = answers.starturl;
     callback();
-  }
-  ,
+  },
   prompting: function () {
     var done = this.async();
     return this.prompt(this._getPrompts()).then(function (answers) {
       this._saveAnswers(answers, done);
     }.bind(this));
-  }
-  ,
+  },
   configuring: function () {
     this.config.save();
-  }
-  ,
+  },
   writing: function () {
     this._createProjectFileSystem();
-  }
-  ,
+  },
   install: function () {
   }
 });
