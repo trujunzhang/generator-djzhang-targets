@@ -22,6 +22,7 @@ websites_allowed_domains = {
 scraped_websites_pagination = {
     # ==Done
     # 1	DailyO ('http://www.dailyo.in/politics')
+    'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
 }
 
 websites_parses = {

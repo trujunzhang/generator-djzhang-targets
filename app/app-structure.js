@@ -3,7 +3,7 @@
 
 var spiders = {
   "files": [
-    "database_factory.py",
+    "/database_factory.py",
     "/items.py",
     "/main.py",
     "/middlewares.py",
@@ -44,25 +44,9 @@ var spiders = {
     "/spiders/politicl_whole_pages_spider.py"
   ]
 };
-var files = [
-  {
-    "folder": "",
-    "value": [
-      "readme.MD",
-      "scrapy.cfg",
-      "setup.py"
-    ]
-  },
-  {
-    "folder": "/db",
-    "value": [
-      "seed.sql"
-    ]
-  }
-];
+
 module.exports = {
-  spiders: spiders,
-  files: files
+  spiders: spiders
 };
 
 
