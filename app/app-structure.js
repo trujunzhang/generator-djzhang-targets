@@ -3,6 +3,7 @@
 
 var spiders = {
   "files": [
+    "database_factory.py",
     "/items.py",
     "/main.py",
     "/middlewares.py",
@@ -40,7 +41,7 @@ var spiders = {
     "/spiders/_politicl_debug_spider.py",
     "/spiders/politicl_spider.py",
     "/spiders/politicl_watch_spider.py",
-    "/spiders/politicl_whole_pages_spider.py",
+    "/spiders/politicl_whole_pages_spider.py"
   ]
 };
 var files = [
@@ -63,6 +64,7 @@ module.exports = {
   spiders: spiders,
   files: files
 };
+
 
 
 
