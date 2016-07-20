@@ -1,5 +1,12 @@
 'use strict';
 
+var roots = {
+  "files": [
+    "readme.MD",
+    "scrapy.cfg",
+    "setup.py",
+  ]
+};
 
 var spiders = {
   "files": [
