@@ -50,8 +50,8 @@ def get_crawler_name():
 
 
     crawler_names = [
-        "<%= appname%>",
-        # "<%= appname%>_debug"
+        # "<%= appname%>",
+         "<%= appname%>_debug"
         # "<%= appname%>_watch",
     ]
 
