@@ -13,9 +13,7 @@ module.exports = generators.Base.extend({
         sourceRoot = this.sourceRoot(),
         templateContext = {
           appname: this.appname,
-          appclassname: this.appclassname,
-          appdomain: this.appdomain,
-          appstarturl: this.appstarturl
+          appclassname: this.appclassname
         };
     var projectName = "/cw" + this.appname;
 
@@ -50,16 +48,6 @@ module.exports = generators.Base.extend({
         name: 'classname',
         message: 'Your spider name,like GooglePlay',
         default: this.appname // Default to current folder name
-      },
-      {
-        type: 'input',
-        name: 'appdomain',
-        message: 'Your spider domain'
-      },
-      {
-        type: 'input',
-        name: 'starturl',
-        message: 'Your spider start url'
       }
     ];
     return prompts;
@@ -71,8 +59,6 @@ module.exports = generators.Base.extend({
   _saveAnswers: function (answers, callback) {
     this.appname = answers.name;
     this.appclassname = answers.classname;
-    this.appdomain = answers.appdomain;
-    this.appstarturl = answers.starturl;
     callback();
   },
   prompting: function () {
