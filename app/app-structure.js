@@ -2,9 +2,9 @@
 
 var roots = {
   "files": [
-    "readme.MD",
-    "scrapy.cfg",
-    "setup.py",
+    "/readme.MD",
+    "/scrapy.cfg",
+    "/setup.py"
   ]
 };
 
@@ -53,6 +53,7 @@ var spiders = {
 };
 
 module.exports = {
+  roots: roots,
   spiders: spiders
 };
 

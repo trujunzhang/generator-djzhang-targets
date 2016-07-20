@@ -26,9 +26,12 @@ module.exports = generators.Base.extend({
     this.fs.copy(sourceRoot + "/app/__init__.py", destProjectRoot + projectName + "/__init__.py");
     this.fs.copy(sourceRoot + "/app/*/**", destProjectRoot + projectName);
 
-    var appRoot = sourceRoot + '/app';
+    structure.roots.files.forEach(function (file) {
+      this.fs.copyTpl(sourceRoot + file, destProjectRoot + file, templateContext);
+    }, this);
+
     structure.spiders.files.forEach(function (file) {
-      this.fs.copyTpl(appRoot + file, destProjectRoot + projectName + file, templateContext);
+      this.fs.copyTpl(sourceRoot + '/app' + file, destProjectRoot + projectName + file, templateContext);
     }, this);
 
   },
